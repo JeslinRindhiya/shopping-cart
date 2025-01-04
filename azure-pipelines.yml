@@ -6,11 +6,13 @@
 trigger:
 - main
 
-pool:
-  vmImage: Test Agent
+pool: Test Agent
+
+steps:
 - task: Maven@4
   inputs:
     mavenPomFile: 'pom.xml'
+    goals: 'test'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     javaHomeOption: 'JDKVersion'
@@ -18,5 +20,3 @@ pool:
     mavenAuthenticateFeed: false
     effectivePomSkip: false
     sonarQubeRunAnalysis: false
-
-steps:
